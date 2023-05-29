@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>D-Generator</title>
+    <link rel="icon" href="https://www2.deloitte.com/content/dam/Deloitte/ca/Images/promo_images/about-deloitte-icon.jpg" type="image/icon type">
+    <style>
+* 
+{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    vertical-align: baseline;
+}
+body{
+    background-color: white;
+}
+div.input_section
+{
+    background-color: #D0D0CE;
+    float: right;
+    width: 30%;
+    height: 88vh;
+    border: 3px solid #86BC25;
+    text-align:center;
+    border-radius: 4px;
+    margin: 4px 4px 4px 2px;
+}
+div.output_section
+{
+    background-color: #D0D0CE;
+    float: left;
+    width: 68%;
+    height: 88vh;
+    border: 3px solid #86BC25;
+    border-radius: 4px;
+    margin: 4px 2px 4px 4px;
+    
+}
+h1.heading
+{
+    background-color: black;
+    text-align: center;
+    color: white; 
+    font: Open Sans;
+    size: 56px; 
+    line-height: 55px;
+}
+h2.input_section_heading,h2.output_section_heading
+{
+    text-align: center;
+    color: white; 
+    background-color: black;
+    font: Open Sans;
+    size: 40px;
+    line-height: 32px ;
+}
+.text_box
+{
+    font: Open Sans;
+    width: 90%;
+    height: 70%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10%;
+    font-size: large;
+}
+.Mic 
+{
+    float: left;
+    background-color: #00A3E0;
+    border: none;
+    color: white;
+    padding: 9px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 20px 4px 4px 70px;
+}
+.Animate
+{
+    font: Open Sans;
+    float: left;
+    background-color: #43B02A;
+    border: black;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 20px 4px 4px 4px;
+}
+
+.Image
+{
+    font: Open Sans;
+    float: left;
+    background-color:  #43B02A ;
+    border: black;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px 4px 4px 4px;
+}
+
+.GIF
+{
+    font: Open Sans;
+    float: left;
+    background-color:  #43B02A ;
+    border: black;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px 4px 4px 4px;
+}
+
+
+.Clear
+{
+    font: Open Sans;
+    float: left;
+    background-color:  #43B02A ;
+    color: white;
+    padding: 8.5px 10px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 20px 4px 4px 4px;
+}
+.Animate:hover 
+{
+    background-color: #26890D;
+}
+.Clear:hover 
+{
+    background-color: #26890D;
+}
+.Image:hover 
+{
+    background-color: #26890D;
+}
+.GIF:hover 
+{
+    background-color: #26890D;
+}
+.Mic:hover 
+{
+    background-color: #005587;
+}
+.img_output
+{
+    width: 350px;
+    height: 350px;
+    padding: 10px;
+    margin-top: 15px;
+}
+.next
+{
+    margin-right: 108px;
+    margin-top: 30vh;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.prev 
+{
+    margin-top: 30vh;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+     /* Styling for the slideshow */
+.slideshow-container 
+{
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides 
+{
+    display: none;
+}
+
+
+/* Style the download button */
+.download-button 
+{
+    font: Open Sans;
+    color: #0df200;
+    top: 10px;
+    margin-left: 135px;
+    background-color: rgb(0, 0, 0) ;
+    padding: 10px 20px;
+    text-align: center;
+    font: Open Sans;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.loader 
+{
+    position: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+0% { transform: translate(-50%, -50%) rotate(0deg); }
+100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+</style>
+</head>
+<body>
+    <div><img src="https://amedeloitte-my.sharepoint.com/:i:/r/personal/khahussain_deloitte_com/Documents/Desktop/Python%20Scrapper/templates/deloitte.png?csf=1&web=1&e=c9QpN6" style="float: left;height: 55px;width: 100px;"/><h1 class="heading">D-Generator</h1> </div>
+       <div class="input_section">
+            <h2 class="input_section_heading">User Query</h2>
+            <script>
+                function updateHiddenInput(texttype) {
+                    var aniText = document.getElementById('ai_text').value;
+                    var imgInput = document.getElementById(texttype);
+                    imgInput.value = aniText;
+                     }
+
+                function clearText() {
+                    document.getElementsByName("myText")[0].value = "";
+                    } 
+
+                function speechtext(){
+                    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+                    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                    recognition.onstart = function() {
+                    console.log('Voice recognition started');
+                    };
+                        recognition.onend = function() {
+                        console.log('Voice recognition stopped');
+                    };
+                    recognition.onresult = function(event) {
+                    const recognizedText = event.results[0][0].transcript;
+                    console.log('Recognized Text:', recognizedText);
+
+                    document.getElementById('ai_text').textContent = recognizedText;
+                    };
+                    const recognitionButton = document.getElementById('recognitionButton');
+                    recognitionButton.addEventListener('click', function() {
+                    recognition.start();
+                    });
+                    } else {
+                    console.log('Speech recognition is not supported in this browser.');
+                    }
+
+                } 
+
+
+            </script>
+            <textarea class = "text_box" type="text" id="ai_text" name="myText" placeholder="Enter text here"></textarea>
+            <div class="buttons">
+                <button class="Mic" id="recognitionButton" onclick="speechtext()"><i class="fa fa-microphone"></i></button>
+            
+                <form id="animation_form" onsubmit="updateHiddenInput('ani_text')" action="/process3" method="post">
+                    <input type="hidden" id="ani_text" name="myText"> 
+                    <button class="Animate" type="submit">Animate</button>
+                </form>
+
+                <form id="image_form" onsubmit="updateHiddenInput('img_text')" action="/process2" method="post">
+                    <input type="hidden" id="img_text" name="myText">  
+                    <button class="Image" type="submit">Image</button>
+                </form>
+
+<!--                 <form id="gif_form" onsubmit="updateHiddenInput('gif_text')" action="/process3" method="post">
+                    <input type="hidden" id="gif_text" name="myText">  
+                    <button class="GIF" type="submit">GIF</button>
+                </form> -->
+
+                <button class="Clear" type="button" onclick="clearText()">Clear</button>
+            </div>
+        </div> 
+            <div class="output_section">
+                <h2 class="output_section_heading">Generated Content</h2>
+<!--                   {% for url in image_urls %}
+                <img class="img_output" src="{{ url }}" alt="Image" id="myImg"> 
+            
+                {% endfor %} -->
+<!-- Slideshow container -->
+<div class="slideshow-container">
+    {% for url in image_urls %}
+    <div class="mySlides">
+    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <img class="img_output" src="{{ url }}" alt="Image" id="myImg" onload="showSlide(this)">
+    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    <a class="download-button" href="{{ url }}" download>Download</a>
+    </div>
+    {% endfor %}
+    </div>
+    
+        
+    <script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+    
+    
+    
+    function changeSlide(n) {
+    showSlides(slideIndex += n);
+    }
+    
+       
+    function showSlides(n) {
+    var slides = document.getElementsByClassName("mySlides");
+    
+        
+    // Reset index if exceeding the total number of slides
+    if (n > slides.length) {
+    slideIndex = 1;
+    }
+     if (n < 1) {
+     slideIndex = slides.length;
+    }
+    
+       
+    // Hide all slides
+    for (var i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    }
+    
+        
+    // Display the current slide
+    slides[slideIndex - 1].style.display = "block";
+    }
+
+    function showSlide(img) { var currentSlide = img.parentNode;
+         var loader = currentSlide.getElementsByClassName("loader")[0];
+          loader.style.display = "none"; }
+
+    </script>
+        
+            </div>
+        
+    </div>
+</body>
+</html>
+
+
