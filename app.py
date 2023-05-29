@@ -34,7 +34,7 @@ def process1():
 #         print('Error occurred while fetching GIFs.')
 #         return []
 def text_to_gif(text_prompt):
-    api_key = 'AIzaSyBDGi4Gp30SSSIFIWB925BLGvDyYVpIaJw'
+    api_key = 'YOUR_API_KEY'
     limit = 10
     ckey = "star-techies"
     search_term = text_prompt
@@ -66,7 +66,7 @@ def process2():
 
     return render_template('index.html', image_urls=result)
 def image_generator(prompt):
-        openai.api_key = "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"
+        openai.api_key = "YOUR_API_KEY"
         response=openai.Image.create(
         prompt=prompt,
         n=5,
@@ -136,8 +136,8 @@ def create_gif(image_urls, output_path):
 def upload_gif_to_s3(file_path):
 
 # Specify your AWS access keys and other details
-    access_key = 'AKIAVXRM24Y43YGVLYH7'
-    secret_key = 'lADa3+A4hWQnwBODmrkLt0sScrEWQYKZNwoVU35g'
+    access_key = 'YOUR_AWS_IAM_ACCESS_KEY'
+    secret_key = 'YOUR_AWS_IAM_SECRET_KEY'
     bucket_name = 'star-techies1'
     region_name = 'ap-south-1'
 
@@ -164,7 +164,7 @@ def upload_gif_to_s3(file_path):
 def image_to_gif_generator(prompt):
     gif_urls = []
     for index in range(2):
-        openai.api_key = "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"
+        openai.api_key = "YOUR_API_KEY"
         response=openai.Image.create(
         prompt=prompt,
         n=5,
